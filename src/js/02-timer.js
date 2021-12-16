@@ -70,13 +70,6 @@ class Timer {
     }, 1000);
   }
 
-  stop() {
-    clearInterval(this.intervalId);
-    this.isActive = false;
-    const time = this.convertMs(0);
-    this.onTick(time);
-  }
-
  convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
