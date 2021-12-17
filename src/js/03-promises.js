@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 
 const refs = {
   delay:document.querySelector(`input[name="delay"]`),
@@ -17,9 +18,9 @@ function onFormSubmit(e) {
     } else {
       delay += parseInt(refs.step.value)
     }
-    createPromise(i, delay)
-      .then((result) => { console.log(result) })
-      .catch((error) => { console.log(error) })
+     createPromise(i, delay)
+       .then((result) => { Notiflix.Notify.success(result) })
+       .catch((error) => { Notiflix.Notify.failure(error) })
 }
 
 }
