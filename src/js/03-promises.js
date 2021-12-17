@@ -12,7 +12,11 @@ let delay = 0
 function onFormSubmit(e) {
   e.preventDefault()
   for (var i = 1; i <= refs.amount.value; i++) {
-    delay+=parseInt(refs.delay.value)
+    if (i === 1) {
+      delay = parseInt(refs.delay.value)
+    } else {
+      delay += parseInt(refs.step.value)
+    }
     createPromise(i, delay)
       .then((result) => { console.log(result) })
       .catch((error) => { console.log(error) })
@@ -25,6 +29,7 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => { 
     const shouldResolve = Math.random() > 0.3;
 
+    
   setInterval(() => { 
   if (shouldResolve) {
     // Fulfill
