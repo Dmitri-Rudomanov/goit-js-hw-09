@@ -25,13 +25,13 @@ minuteIncrement: 1,
       console.log(selectedDates[0]);
       if (selectedDates[0] < date) {
         refs.startBtn.disabled=true
-        Notiflix.Notify.warning("Please choose a date in the future")
+        Notiflix.Notify.failure("Please choose a date in the future")
       }
       else {
           startTime = selectedDates[0]
           console.log(startTime)
           refs.startBtn.disabled = false
-          Notiflix.Notify.success('Date has been chosen');
+          Notiflix.Notify.success('Date is correct');
       }
   },
 };
