@@ -19,8 +19,12 @@ function onFormSubmit(e) {
       delay += parseInt(refs.step.value)
     }
      createPromise(i, delay)
-       .then((result) => { Notiflix.Notify.success(result) })
-       .catch((error) => { Notiflix.Notify.failure(error) })
+      .then(({ position, delay }) => {
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
 }
 
 }
@@ -30,15 +34,37 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => { 
     const shouldResolve = Math.random() > 0.3;
 
-    
   setInterval(() => { 
   if (shouldResolve) {
     // Fulfill
-   resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+    resolve({position,delay});
   } else {
     // Reject
-  reject(`❌ Rejected promise ${position} in ${delay}ms`);
+  reject({position,delay});
   }
     }, delay)
   })
 }
+// .then((result) => { Notiflix.Notify.success(result) })
+//        .catch((error) => { Notiflix.Notify.failure(error) })
+// }
+
+// }
+
+// function createPromise(position, delay) {
+  
+//   return new Promise((resolve, reject) => { 
+//     const shouldResolve = Math.random() > 0.3;
+
+    
+//   setInterval(() => { 
+//   if (shouldResolve) {
+//     // Fulfill
+//    resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+//   } else {
+//     // Reject
+//   reject(`❌ Rejected promise ${position} in ${delay}ms`);
+//   }
+//     }, delay)
+//   })
+// }

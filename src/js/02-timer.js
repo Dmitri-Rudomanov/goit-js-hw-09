@@ -14,7 +14,7 @@ const refs = {
     minutes:document.querySelector("[data-minutes]"),
     seconds:document.querySelector("[data-seconds]"),
 }
-
+refs.startBtn.disabled=true
 let startTime=0
 const options = {
   enableTime: true,
@@ -22,8 +22,8 @@ const options = {
   defaultDate: new Date(),
 minuteIncrement: 1,
   onClose(selectedDates) {
-      console.log(selectedDates[0]);
-      if (selectedDates[0] < date) {
+    console.log(selectedDates[0]);
+    if (selectedDates[0] < date) {
         refs.startBtn.disabled=true
         Notiflix.Notify.failure("Please choose a date in the future")
       }
@@ -58,10 +58,7 @@ class Timer {
     if (this.isActive) {
       return;
     }
-
-    
     this.isActive = true;
-
     this.intervalId = setInterval(() => {
         const currentTime = Date.now();
       const deltaTime =startTime-currentTime;
