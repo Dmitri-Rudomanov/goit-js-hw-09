@@ -29,7 +29,6 @@ minuteIncrement: 1,
       }
       else {
           startTime = selectedDates[0]
-          console.log(startTime)
           refs.startBtn.disabled = false
           Notiflix.Notify.success('Date is correct');
       }
@@ -58,6 +57,7 @@ class Timer {
     if (this.isActive) {
       return;
     }
+    refs.startBtn.disabled=true
     this.isActive = true;
     this.intervalId = setInterval(() => {
         const currentTime = Date.now();
